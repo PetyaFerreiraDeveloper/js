@@ -1,18 +1,24 @@
+const express = require('express');
 const cors = require('cors');
+const validatePassword = require('./validatePassword');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
+
+
 app.post('/users', (req, res) => {
     const { username, password } = req.body;
 
     // validate username
     // validate password
+    
     // save user to database
 
-    const validPassword = true;
+    const validPassword = validatePassword(password);
+
     if (validPassword) {
         res.send({ message: 'Valid user'});
     } else {
